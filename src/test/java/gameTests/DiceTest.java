@@ -9,6 +9,10 @@ public class DiceTest {
 
     @Test
     public void canRollDice() {
-        assertEquals(1, Dice.roll());
+        Integer roll = Dice.roll();
+        boolean test = roll instanceof Integer;
+        assertEquals( true, test);
+        assertEquals(true, roll > 0);
+        assertEquals(true, roll <= 6);
     }
 }
