@@ -2,6 +2,7 @@ package gameTests;
 
 import characters.enemies.Dragon;
 import characters.enemies.Minataur;
+import characters.players.Cleric;
 import characters.players.Creature;
 import enums.Armour;
 import enums.CreatureType;
@@ -19,12 +20,14 @@ public class AdversariesTest {
     Minataur minataur;
     Creature creature;
     Dragon dragon;
+    Cleric cleric;
 
     @Before
     public void before(){
             minataur = new Minataur("Cretan Bull", 10, 10, 3, Armour.LEATHER, Weapon.WARHAMMER);
             creature = new Creature("Mighty Midge", 4, 2, 9, CreatureType.MIDGIE);
             dragon = new Dragon("Fred", 10, 5, 7, Spell.ITCHYNOSE, creature);
+            cleric = new Cleric("Budda", 10, 4, 9);
             adversaries = new Adversaries();
 
     }
@@ -44,6 +47,7 @@ public class AdversariesTest {
     public void canAddMultipleAdversaries(){
         adversaries.addAdversary(minataur);
         adversaries.addAdversary(dragon);
-        assertEquals(2, adversaries.getAdversaries().size());
+        adversaries.addAdversary(cleric);
+        assertEquals(3, adversaries.getAdversaries().size());
     }
 }
