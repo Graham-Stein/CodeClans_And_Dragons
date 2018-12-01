@@ -8,7 +8,6 @@ import game.Room;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 public class Game {
 
@@ -62,24 +61,11 @@ public class Game {
         return result;
     }
 
-//    select the best player from Fellowship to fight on the basis of 1) most health then 2) compare best scores (cpmbat value?)
-// for different cases of:
-//  fighter: best strength * weapon value and magician intelligence * spell value
-//    return the Character
-
     public Character selectBestCombatCharacter() {
         ArrayList<Character> healthiestPlayers = new ArrayList<>();
         healthiestPlayers = getHealthiestPlayers();
         ArrayList<Character> strongestForCombat = new ArrayList<>();
-        int maxCombatValue = 0;
-            for (Character character : healthiestPlayers){
-                if (getCombatValue(character) > maxCombatValue)
-                maxCombatValue = getCombatValue(character);
-            }
-        for (Character character : healthiestPlayers){
-            if (getCombatValue(character) == maxCombatValue)
-                strongestForCombat.add(character);
-        }
+        strongestForCombat = getStrongestForCombat(healthiestPlayers);
             return strongestForCombat.get(0);
         }
 
@@ -98,6 +84,20 @@ public class Game {
             }
         }
         return healthiestPlayers;
+    }
+
+    private ArrayList<Character> getStrongestForCombat(ArrayList<Character> healthiestPlayers){
+        ArrayList<Character> strongestForCombat = new ArrayList<>();
+        int maxCombatValue = 0;
+        for (Character character : healthiestPlayers){
+            if (getCombatValue(character) > maxCombatValue)
+                maxCombatValue = getCombatValue(character);
+        }
+        for (Character character : healthiestPlayers){
+            if (getCombatValue(character) == maxCombatValue)
+                strongestForCombat.add(character);
+        }
+        return strongestForCombat;
     }
 
     private int getCombatValue(Character character){
