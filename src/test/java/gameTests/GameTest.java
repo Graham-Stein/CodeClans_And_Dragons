@@ -23,6 +23,10 @@ public class GameTest {
     Game game;
     Adversaries adversaries;
     Minataur minataur;
+    Minataur minataur1;
+    Minataur minataur2;
+    Minataur minataur3;
+    Minataur minataur4;
     Creature creature;
     Dragon dragon;
     Cleric cleric;
@@ -37,6 +41,10 @@ public class GameTest {
     @Before
     public void before(){
         minataur = new Minataur("Cretan Bull", 10, 10, 3, Armour.LEATHER, Weapon.WARHAMMER);
+        minataur1 = new Minataur("Fred", 10, 10, 3, Armour.CHAINMAIL, Weapon.BATTLEAXE);
+        minataur2 = new Minataur("Rodger", 10, 10, 2, Armour.RINGMAIL, Weapon.SLINGSHOT);
+        minataur3 = new Minataur("Crusty", 10, 10, 3, Armour.LEATHER, Weapon.SPEAR);
+        minataur4 = new Minataur("Flipper", 10, 10, 3, Armour.LEATHER, Weapon.SPEAR);
         creature = new Creature("Mighty Midge", 4, 2, 9, CreatureType.MIDGIE);
         dragon = new Dragon("Fred", 10, 5, 7, Spell.ITCHYNOSE, creature);
         cleric = new Cleric("Budda", 10, 4, 9);
@@ -50,10 +58,13 @@ public class GameTest {
         creature2 = new Creature("Mighty Midge", 4, 2, 9, CreatureType.MIDGIE);
         wizard = new Wizard("Fred", 10, 5, 7, Spell.ITCHYNOSE, creature2);
 
-        game = new Game();
 
         adversaries = new Adversaries();
         adversaries.addAdversary(minataur);
+        adversaries.addAdversary(minataur1);
+        adversaries.addAdversary(minataur2);
+        adversaries.addAdversary(minataur3);
+        adversaries.addAdversary(minataur4);
         adversaries.addAdversary(dragon);
 
         fellowship = new Fellowship();
@@ -64,33 +75,26 @@ public class GameTest {
         fellowship.addCharacter(warlock);
         fellowship.addCharacter(wizard);
 
+        game = new Game(fellowship, adversaries);
     }
 
     @Test
     public void hasAdversaries(){
-        game.setEnemies(adversaries);
         int result = game.getEnemies().getAdversaries().size();
         assertEquals(2,  result);
     }
 
     @Test
     public void hasFellowship(){
-        game.setPlayerGroup(fellowship);
         int result = game.getPlayerGroup().getFellowship().size();
         assertEquals(6, result);
     }
 
     @Test
     public void returnsAndRemovesCharacterFromEnemiesArrayList(){
-        game.setEnemies(adversaries);
+        assertEquals(2, game.getEnemies().getAdversaries().size());
         boolean result = game.getOpponent() instanceof Character;
         assertEquals(true, result);
-        assertEquals(1, game.getEnemies().getAdversaries().size());
-    }
-
-    @Test
-    public void hasEmptyRoomList(){
-        assertEquals(0, game.getRooms().size());
     }
 
     @Test

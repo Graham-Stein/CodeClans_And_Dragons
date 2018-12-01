@@ -40,13 +40,19 @@ public class RoomTest {
         minataur = new Minataur("Cretan Bull", 10, 10, 3, Armour.LEATHER, Weapon.WARHAMMER);
         creature = new Creature("Mighty Midge", 4, 2, 9, CreatureType.MIDGIE);
         dragon = new Dragon("Fred", 10, 5, 7, Spell.ITCHYNOSE, creature);
-        game = new Game();
+        barbarian = new Barbarian("Konan", 10, 8, 2, Armour.PLATEMAIL, Weapon.SWORD);
+        cleric = new Cleric("Budda", 10, 4, 9);
 
         adversaries = new Adversaries();
         adversaries.addAdversary(minataur);
         adversaries.addAdversary(dragon);
 
-        game.setEnemies(adversaries);
+        fellowship = new Fellowship();
+        fellowship.addCharacter(barbarian);
+        fellowship.addCharacter(cleric);
+
+//        game.setEnemies(adversaries);
+        game = new Game(fellowship, adversaries);
     }
 
     @Test
