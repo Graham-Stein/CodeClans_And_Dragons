@@ -16,12 +16,12 @@ public class Fight {
         this.defenderHitsAttacker();
     }
 
-    public void attackerHitsDefender(){
+    private void attackerHitsDefender(){
         int fightScore = this.attacker.fightScore(Dice.roll());
         this.defender.setHealth(this.defender.getHealth() - fightScore);
     }
 
-    public void defenderHitsAttacker(){
+    private void defenderHitsAttacker(){
         int fightScore = this.defender.fightScore(Dice.roll());
         this.attacker.setHealth(this.attacker.getHealth() - fightScore);
     }

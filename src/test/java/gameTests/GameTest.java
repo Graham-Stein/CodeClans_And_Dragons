@@ -1,5 +1,6 @@
 package gameTests;
 
+import characters.Character;
 import characters.enemies.Dragon;
 import characters.enemies.Minataur;
 import characters.players.*;
@@ -77,5 +78,23 @@ public class GameTest {
         game.setPlayerGroup(fellowship);
         int result = game.getPlayerGroup().getFellowship().size();
         assertEquals(6, result);
+    }
+
+    @Test
+    public void returnsAndRemovesCharacterFromEnemiesArrayList(){
+        game.setEnemies(adversaries);
+        boolean result = game.getOpponent() instanceof Character;
+        assertEquals(true, result);
+        assertEquals(1, game.getEnemies().getAdversaries().size());
+    }
+
+    @Test
+    public void hasEmptyRoomList(){
+        assertEquals(0, game.getRooms().size());
+    }
+
+    @Test
+    public void canCreateRoomList(){
+        assertEquals(4, game.getRooms().size());
     }
 }

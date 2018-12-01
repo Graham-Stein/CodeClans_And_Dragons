@@ -23,25 +23,25 @@ public class FightTest {
 
     }
 
-    @Test
-    public void attackerCanDeductHealthFromDefender(){
-        int health = minataur.getHealth();
-        assertEquals(true, health == 10);
-        fight = new Fight(barbarian, minataur);
-        fight.attackerHitsDefender();
-        int health2 = minataur.getHealth();
-        assertEquals( true, health2 < 10);
-    }
-
-    @Test
-    public void defenderCanDeductHealthFromAttacker(){
-        int health = barbarian.getHealth();
-        assertEquals(true, health == 10);
-        fight = new Fight(barbarian, minataur);
-        fight.defenderHitsAttacker();
-        int health2 = barbarian.getHealth();
-        assertEquals( true, health2 < 10);
-    }
+//    @Test
+//    public void attackerCanDeductHealthFromDefender(){
+//        int health = minataur.getHealth();
+//        assertEquals(true, health == 10);
+//        fight = new Fight(barbarian, minataur);
+//        fight.attackerHitsDefender();
+//        int health2 = minataur.getHealth();
+//        assertEquals( true, health2 < 10);
+//    }
+//
+//    @Test
+//    public void defenderCanDeductHealthFromAttacker(){
+//        int health = barbarian.getHealth();
+//        assertEquals(true, health == 10);
+//        fight = new Fight(barbarian, minataur);
+//        fight.defenderHitsAttacker();
+//        int health2 = barbarian.getHealth();
+//        assertEquals( true, health2 < 10);
+//    }
 
     @Test
     public void canHave2WayFight(){
