@@ -101,4 +101,11 @@ public class GameTest {
     public void canCreateRoomList(){
         assertEquals(4, game.getRooms().size());
     }
+
+    @Test
+    public void canGetBestFightPlayer(){
+        Character selected = game.selectBestCombatCharacter();
+        boolean result = selected instanceof Character;
+        assertEquals(true, result);
+    }
 }
