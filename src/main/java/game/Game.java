@@ -1,29 +1,28 @@
 package game;
-import java.util.ArrayList;
 
 public class Game {
 
-    private Fellowship fellowship;
-    private Adversaries adversaries;
+    private Fellowship playerGroup;
+    private Adversaries enemies;
 
     public Game(){
-        this.fellowship = new Fellowship();
-        this.adversaries = new Adversaries();
+        this.playerGroup = new Fellowship();
+        this.enemies = new Adversaries();
     }
 
-    public void setAdversaries(Adversaries adversaries) {
-        this.adversaries = adversaries;
+    public void setEnemies(Adversaries adversaries) {
+        this.enemies = adversaries;
     }
 
-    public void setFellowship(Fellowship fellowship) {
-        this.fellowship = fellowship;
+    public void setPlayerGroup(Fellowship fellowship) {
+        this.playerGroup = fellowship;
     }
 
-    public Adversaries getAdversaries() {
-        return this.adversaries;
+    public Adversaries getEnemies() {
+        return this.enemies;
     }
 
-    public Fellowship getFellowship() {
-        return this.fellowship;
+    public Fellowship getPlayerGroup() {
+        return this.playerGroup;
     }
 }

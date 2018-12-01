@@ -8,6 +8,7 @@ import enums.CreatureType;
 import enums.Spell;
 import enums.Weapon;
 import game.Adversaries;
+import game.Fellowship;
 import game.Game;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,6 +31,7 @@ public class GameTest {
     Warlock warlock;
     Creature creature2;
     Wizard wizard;
+    Fellowship fellowship;
 
     @Before
     public void before(){
@@ -37,9 +39,7 @@ public class GameTest {
         creature = new Creature("Mighty Midge", 4, 2, 9, CreatureType.MIDGIE);
         dragon = new Dragon("Fred", 10, 5, 7, Spell.ITCHYNOSE, creature);
         cleric = new Cleric("Budda", 10, 4, 9);
-        adversaries = new Adversaries();
-        adversaries.addAdversary(minataur);
-        adversaries.addAdversary(dragon);
+
         barbarian = new Barbarian("Konan", 10, 8, 2, Armour.PLATEMAIL, Weapon.SWORD);
         cleric = new Cleric("Budda", 10, 4, 9);
         dwarf = new Dwarf("Thorin", 10, 9, 5, Armour.CHAINMAIL, Weapon.BATTLEAXE);
@@ -48,14 +48,34 @@ public class GameTest {
         warlock = new Warlock("Bob", 10, 4, 8, Spell.FROG, creature);
         creature2 = new Creature("Mighty Midge", 4, 2, 9, CreatureType.MIDGIE);
         wizard = new Wizard("Fred", 10, 5, 7, Spell.ITCHYNOSE, creature2);
+
         game = new Game();
+
+        adversaries = new Adversaries();
+        adversaries.addAdversary(minataur);
+        adversaries.addAdversary(dragon);
+
+        fellowship = new Fellowship();
+        fellowship.addCharacter(barbarian);
+        fellowship.addCharacter(cleric);
+        fellowship.addCharacter(dwarf);
+        fellowship.addCharacter(knight);
+        fellowship.addCharacter(warlock);
+        fellowship.addCharacter(wizard);
+
     }
 
     @Test
     public void hasAdversaries(){
-        game.setAdversaries(adversaries);
-        Adversaries result = game.getAdversaries();
-        int result2 = result.getAdversaries().size();
-        assertEquals(2,  result2);
+        game.setEnemies(adversaries);
+        int result = game.getEnemies().getAdversaries().size();
+        assertEquals(2,  result);
+    }
+
+    @Test
+    public void hasFellowship(){
+        game.setPlayerGroup(fellowship);
+        int result = game.getPlayerGroup().getFellowship().size();
+        assertEquals(6, result);
     }
 }
