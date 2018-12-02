@@ -8,10 +8,7 @@ import enums.Armour;
 import enums.CreatureType;
 import enums.Spell;
 import enums.Weapon;
-import game.Adversaries;
-import game.Fellowship;
-import game.Game;
-import game.Room;
+import game.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +30,8 @@ public class RoomTest {
     Creature creature2;
     Wizard wizard;
     Fellowship fellowship;
+    Vendor vendor;
+
 
     @Before
     public void  before(){
@@ -52,7 +51,11 @@ public class RoomTest {
         fellowship.addCharacter(cleric);
 
 //        game.setEnemies(adversaries);
-        game = new Game(fellowship, adversaries);
+        vendor = new Vendor();
+        vendor.changeStockLevel(Weapon.BATTLEAXE, 4);
+        vendor.changeStockLevel(Spell.FROG, 3);
+        vendor.changeStockLevel(Armour.CHAINMAIL, 5);
+        game = new Game(fellowship, adversaries, vendor);
     }
 
     @Test
@@ -66,5 +69,12 @@ public class RoomTest {
         boolean result = room.getEnemy() instanceof Character;
         assertEquals(true, result);
         assertEquals(minataur, room.getEnemy());
+    }
+
+    @Test
+    public void canSetVendor(){
+        room.setVendor(vendor);
+        int result = room.getVendor().getNumberOfItems();
+        assertEquals(3, result);
     }
 }

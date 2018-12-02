@@ -11,6 +11,7 @@ import enums.Weapon;
 import game.Adversaries;
 import game.Fellowship;
 import game.Game;
+import game.Vendor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +38,7 @@ public class GameTest {
     Creature creature2;
     Wizard wizard;
     Fellowship fellowship;
+    Vendor vendor;
 
     @Before
     public void before(){
@@ -75,7 +77,12 @@ public class GameTest {
         fellowship.addCharacter(warlock);
         fellowship.addCharacter(wizard);
 
-        game = new Game(fellowship, adversaries);
+        vendor = new Vendor();
+        vendor.changeStockLevel(Weapon.BATTLEAXE, 4);
+        vendor.changeStockLevel(Spell.FROG, 3);
+        vendor.changeStockLevel(Armour.CHAINMAIL, 5);
+
+        game = new Game(fellowship, adversaries, vendor);
     }
 
     @Test

@@ -13,7 +13,11 @@ public class Vendor {
     }
 
     public int getShopStock(ISell item) {
-        return this.shopStock.get(item);
+        if (this.shopStock.containsKey(item)) {
+            return this.shopStock.get(item);
+        } else {
+            return 0;
+        }
     }
 
     public int getNumberOfItems() {

@@ -14,11 +14,13 @@ public class Game {
     private Fellowship playerGroup;
     private Adversaries enemies;
     private ArrayList<Room> rooms;
+    private Vendor vendor;
 
-    public Game(Fellowship playerGroup, Adversaries enemies) {
+    public Game(Fellowship playerGroup, Adversaries enemies, Vendor vendor) {
         this.playerGroup = playerGroup;
         this.enemies = enemies;
         this.rooms = new ArrayList<>();
+        this.vendor = vendor;
         this.populateRooms();
     }
 
@@ -26,6 +28,7 @@ public class Game {
         for (RoomType roomName : RoomType.values()) {
             Room room = new Room(roomName.getValue());
             room.setEnemy(this.getOpponent());
+            room.setVendor(vendor);
             this.rooms.add(room);
         }
         Collections.shuffle(this.rooms);
