@@ -67,7 +67,7 @@ public class KnightTest {
 
     @Test
     public void willNotSellSpellFromVendor(){
-        knight.buyItem(Spell.ITCHYNOSE, vendor);
+        knight.buyItem(Spell.FROG, vendor);
         assertEquals(Weapon.SPEAR, knight.getWeapon());
     }
 

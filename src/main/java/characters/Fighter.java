@@ -25,9 +25,11 @@ public abstract class Fighter extends Character{
 //        reduce the stock by one and replace the fighter's weapon or armour.
         boolean inStock = vendor.getShopStock(item) > 0;
         if (item instanceof Armour && inStock) {
-        setArmour((Armour) item);
+            setArmour((Armour) item);
+            vendor.changeStockLevel(item, -1);
         } else if (item instanceof Weapon && inStock) {
-        setWeapon((Weapon) item);
+            setWeapon((Weapon) item);
+            vendor.changeStockLevel(item, -1);
         }
     }
 
