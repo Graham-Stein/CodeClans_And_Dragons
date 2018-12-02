@@ -26,8 +26,9 @@ public class Game {
         for (RoomType roomName : RoomType.values()) {
             Room room = new Room(roomName.getValue());
             room.setEnemy(this.getOpponent());
-            rooms.add(room);
+            this.rooms.add(room);
         }
+        Collections.shuffle(this.rooms);
     }
 
     public void setEnemies(Adversaries adversaries) {

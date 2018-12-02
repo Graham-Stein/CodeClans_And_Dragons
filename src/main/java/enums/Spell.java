@@ -1,6 +1,8 @@
 package enums;
 
-public enum Spell {
+import behaviours.ISell;
+
+public enum Spell implements ISell {
     FIREBALL(6),
     LIGHTNIGHT(4),
     FROG(10),

@@ -1,6 +1,8 @@
 package enums;
 
-public enum Armour {
+import behaviours.ISell;
+
+public enum Armour implements ISell {
     CHAINMAIL(5),
     PLATEMAIL(10),
     RINGMAIL(3),

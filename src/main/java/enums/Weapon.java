@@ -1,6 +1,8 @@
 package enums;
 
-public enum Weapon {
+import behaviours.ISell;
+
+public enum Weapon implements ISell {
     SWORD(6),
     BATTLEAXE(8),
     WARHAMMER(7),
